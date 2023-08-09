@@ -1,23 +1,15 @@
-import styled from 'styled-components'
+import {  Outlet } from 'react-router-dom'
 import GlobalStyle from './styles/global'
+import { Navbar } from './components/Navbar'
 
-const Container = styled.div`
-background-color: black;
-color: white;
-width: 100vw;
-padding: 20px;
 
-display: flex;
-justify-content: center;
-`
 function App() {
   
   return (
     <div className='App'>
       <GlobalStyle />
-      <Container>
-      NEW Div
-    </Container>
+     <Navbar />
+      <Outlet />
     </div>
    
   )
