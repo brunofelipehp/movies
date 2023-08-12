@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
+
+import { MovieCard } from "../../components/MovieCard/index";
+
 import { Container, MoviesContainer, Title } from "./styles";
 
-const moviesURL = import.meta.env.VITE_API;
-const apiKey = import.meta.env.VITE_API_KEY;
+const moviesURL: string = import.meta.env.VITE_API;
+const apiKey: string = import.meta.env.VITE_API_KEY;
 
-interface MoviesProps {
-  id: number;
-  title: string;
+export interface MoviesProps {
+    id: number;
+    title: string;
+    poster_path: string;
+    vote_average: number;
 }
+
 
 export function Home() {
   const [topMovies, setTopMovies] = useState<MoviesProps[]>([]);
@@ -35,8 +41,16 @@ export function Home() {
       <Title>Melhores</Title>
       <MoviesContainer>
         {topMovies.length === 0 && <p>Carregando...</p>}
-        {topMovies &&
-          topMovies.map((movie) => <p key={movie.id}>{movie.title}</p>)}
+        {topMovies.length > 0 &&
+          topMovies.map((movie) => (
+            <MovieCard 
+              key={movie.id}
+              id={movie.id}
+              title={movie.title}
+              poster_path={movie.poster_path}
+              vote_average={movie.vote_average}
+            />
+          ))}
       </MoviesContainer>
     </Container>
   );
