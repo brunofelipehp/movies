@@ -22,7 +22,7 @@ export function Home() {
     const res = await fetch(url, {
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${apiKey}`,
+        "Authorization": `Bearer ${apiKey}`,
       },
     });
     const data = await res.json();
