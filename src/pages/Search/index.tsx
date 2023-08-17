@@ -20,10 +20,8 @@ export  function Search () {
   const getSearchMovies = async (url: string) => {
     const res = await fetch(url, {
       headers: {
+        "Content-Type": "application/json",
         "Authorization": `Bearer ${apiKey}`,
-        "accept": "application/json",
-        'Access-Control-Allow-Origin': ' *',
-        
       },
     });
     const data = await res.json();

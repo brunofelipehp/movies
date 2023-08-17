@@ -8,7 +8,7 @@ const moviesURL: string = import.meta.env.VITE_API;
 const apiKey: string = import.meta.env.VITE_API_KEY;
 
 export interface MoviesProps {
-    id: number;
+    id?: number;
     title: string;
     poster_path: string;
     vote_average: number;
