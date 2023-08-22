@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
 import { FaStar } from "react-icons/fa";
-import { MoviesProps } from "../../pages/Home";
 import { Card } from "./styles";
+import { MoviesProps } from "../../hooks/useMovieUrl";
 
 export interface MovieCardProps extends MoviesProps {
   showLink?: boolean;

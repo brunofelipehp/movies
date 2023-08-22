@@ -1,48 +1,19 @@
-import { useEffect, useState } from "react";
-
 import { MovieCard } from "../../components/MovieCard/index";
 
 import { Container, MoviesContainer, Title } from "./styles";
-
-const moviesURL: string = import.meta.env.VITE_API;
-const apiKey: string = import.meta.env.VITE_API_KEY;
-
-export interface MoviesProps {
-    id?: number;
-    title: string;
-    poster_path: string;
-    vote_average: number;
-}
+import { useMovieUrl } from "../../hooks/useMovieUrl";
 
 
 export function Home() {
-  const [topMovies, setTopMovies] = useState<MoviesProps[]>([]);
-
-  const getTopRatedMovies = async (url: string) => {
-    const res = await fetch(url, {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${apiKey}`,
-      },
-    });
-    const data = await res.json();
-
-    setTopMovies(data.results);
-  };
-
-  useEffect(() => {
-    const topRatedUrl = `${moviesURL}top_rated?${apiKey}`;
-
-    getTopRatedMovies(topRatedUrl);
-  }, []);
+  const {movies} = useMovieUrl()
 
   return (
     <Container>
       <Title>Melhores</Title>
       <MoviesContainer>
-        {topMovies.length === 0 && <p>Carregando...</p>}
-        {topMovies.length > 0 &&
-          topMovies.map((movie) => (
+        {movies.length === 0 && <p>Carregando...</p>}
+        {movies.length > 0 &&
+          movies.map((movie) => (
             <MovieCard 
               key={movie.id}
               id={movie.id}
