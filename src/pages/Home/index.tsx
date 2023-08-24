@@ -1,20 +1,23 @@
-import { MovieCard } from "../../components/MovieCard/index";
+import { MovieCard } from "../../components/MovieCard";
+import { SearchMovies } from "../../components/SearchMovies";
 
-import { Container, MoviesContainer, Title } from "./styles";
 import { useMovieUrl } from "../../hooks/useMovieUrl";
 
+import { Container, MoviesContainer, Title } from "./styles";
+import { Loading } from "../../styles/global";
 
 export function Home() {
-  const {movies} = useMovieUrl()
+  const { movies } = useMovieUrl();
 
   return (
     <Container>
+      <SearchMovies />
       <Title>Melhores</Title>
       <MoviesContainer>
-        {movies.length === 0 && <p>Carregando...</p>}
+        {movies.length === 0 && <Loading>Carregando...</Loading>}
         {movies.length > 0 &&
           movies.map((movie) => (
-            <MovieCard 
+            <MovieCard
               key={movie.id}
               id={movie.id}
               title={movie.title}

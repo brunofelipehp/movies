@@ -20,12 +20,12 @@ img, h2, p {
 }
 
 svg {
-    color: #f7d354;
+    color: #7B68EE;
 }
 
 a {
-        background-color: #f7d354;
-        border: 2px solid #f7d354;
+        background-color: #7B68EE;
+        border: 2px solid #7B68EE	;
         border-radius: 4px;
         color: #000;
         padding: 1rem .5rem;
@@ -36,7 +36,7 @@ a {
 
         &:hover {
           background-color: transparent;
-          color: #f7d354;
+          color: #7B68EE;
         }
     }
 `

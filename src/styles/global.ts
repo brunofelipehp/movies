@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, styled } from 'styled-components'
 
 export default createGlobalStyle`
 *{
@@ -15,11 +15,15 @@ body {
 
 a {
     text-decoration: none;
-    color: #F7D354;
+    color: #7B68EE;
     transition: .5s;
 }
 
 a:hover {
-    color: #B8930C;
+    color: #9370DB;
 }
+`
+
+export const Loading = styled.p`
+    text-align: center;
 `

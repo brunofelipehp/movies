@@ -7,9 +7,10 @@ flex-direction: column;
 max-width: 600px;
 margin: 2rem auto;
 
+
 svg {
     font-size: 1.5rem;
-    color: #F7D354;
+    color: #7B68EE;
 }
 
 

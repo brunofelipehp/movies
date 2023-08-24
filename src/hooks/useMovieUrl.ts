@@ -5,20 +5,25 @@ export interface MoviesProps {
   title: string;
   poster_path: string;
   vote_average: number;
-  tagline?: string;
-  budget?: string;
-  revenue?: number;
-  runtime?: number;
-  overview?: string;
-  
+
 }
+
+interface  DetailsProps {
+  tagline: string;
+  budget: string;
+  revenue: number;
+  runtime: number;
+  overview: string;
+}
+
+type MoviesDetailsProps = MoviesProps & DetailsProps;
 
 const moviesURL: string = import.meta.env.VITE_API;
 const apiKey: string = import.meta.env.VITE_API_KEY;
 
 export const useMovieUrl = (id?: string) => {
   const [movies, setMovies] = useState<MoviesProps[]>([]);
-  const [movieDetails, setMovieDetails] = useState<MoviesProps>();
+  const [movieDetails, setMovieDetails] = useState<MoviesDetailsProps>();
 
   const getMovies = async (url: string) => {
     const res = await fetch(url, {
@@ -36,6 +41,14 @@ export const useMovieUrl = (id?: string) => {
     }
   };
 
+  const formatCurrencyMovie = (number: number) => {
+    return number.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
+  };
+
+
   useEffect(() => {
     const topUrl: string = id
       ? `${moviesURL}${id}`
@@ -44,5 +57,5 @@ export const useMovieUrl = (id?: string) => {
     getMovies(topUrl);
   }, []);
 
-  return {movies, movieDetails};
+  return {movies, movieDetails, formatCurrencyMovie};
 };
