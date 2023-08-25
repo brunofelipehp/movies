@@ -9,17 +9,17 @@ margin-bottom: 3rem;
 input {
     border: none;
     border-radius: 2rem;
-    width: 23rem;
-    height: 3rem;
+    width: 30rem;
+    height: 4.8rem;
     color: #7B68EE;
-    padding: 1rem;
+    padding: 1.6rem;
     font-weight: 700;
 
     background-color: #121212;
 
     &::placeholder  {
         color: #7B68EE;
-        padding: .5rem;
+        padding: .8rem;
         font-weight: 700;
     }
 }

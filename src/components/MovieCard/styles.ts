@@ -2,21 +2,21 @@ import styled from "styled-components"
 
 
 export const Card = styled.div`
-width: 18rem;
+width: 30rem;
 color: #FFF;
 margin-bottom: 2.5rem;
 display: flex;
 flex-direction: column;
 justify-content: center;
 background-color: #111;
-padding: 1rem;
+padding: 1.6rem;
 
 img {
     max-width: 100%;
 }
 
 img, h2, p {
-    margin-bottom: 1rem;
+    margin-bottom: 1.6rem;
 }
 
 svg {
@@ -28,7 +28,7 @@ a {
         border: 2px solid #7B68EE	;
         border-radius: 4px;
         color: #000;
-        padding: 1rem .5rem;
+        padding: 1.6rem .8rem;
         align-items: center;
         transition: .4s;
         text-align: center;

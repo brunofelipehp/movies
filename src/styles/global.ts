@@ -1,6 +1,13 @@
-import { createGlobalStyle, styled } from 'styled-components'
+import { createGlobalStyle, styled } from "styled-components";
 
 export default createGlobalStyle`
+
+:root{
+    font-size: 62.5%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -11,6 +18,7 @@ export default createGlobalStyle`
 body {
     background-color: #000;
     color: #FFF;
+    font-size: 1.6rem;
 }
 
 a {
@@ -22,8 +30,8 @@ a {
 a:hover {
     color: #9370DB;
 }
-`
+`;
 
 export const Loading = styled.p`
-    text-align: center;
-`
+  text-align: center;
+`;

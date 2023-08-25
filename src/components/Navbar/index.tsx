@@ -10,7 +10,7 @@ export const Navbar = () => {
     <Menu>
       <h2>
         <Link to="/">
-          <PiPopcorn /> MoviesLib
+          <PiPopcorn /> Movies Views
         </Link>
       </h2>
     </Menu>

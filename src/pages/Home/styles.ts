@@ -9,17 +9,17 @@ justify-content: center;
 
 export const Title = styled.h2`
 color: #FFF;
-font-size: 2.5rem;
+font-size: 4rem;
 text-align: center;
-margin: 2rem 0 1rem;
+margin: 3.2rem 0 1.6rem;
 `
 export const MoviesContainer = styled.div`
 display: flex;
-flex-wrap: wrap;
 justify-content: center;
-gap: 2.5rem;
-padding: 2rem;
+flex-wrap: wrap;
+gap: 2.4rem;
+padding: 3.2rem;
 max-width: 1200px;
 margin: 0 auto;
-
 `
+
