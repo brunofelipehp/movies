@@ -7,7 +7,6 @@ import {
   BsFillFileEarmarkTextFill,
 } from "react-icons/bs";
 import { FaStar } from "react-icons/fa";
-import { SearchMovies } from "../../components/SearchMovies";
 
 import { useMovieUrl } from "../../hooks/useMovieUrl";
 
@@ -23,7 +22,6 @@ export function Movie() {
 
   return (
     <MoviePage>
-      <SearchMovies />
       {!movieDetails && <Loading>Carregando...</Loading>}
       {movieDetails && (
         <>

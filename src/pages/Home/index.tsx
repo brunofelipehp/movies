@@ -1,5 +1,4 @@
 import { MovieCard } from "../../components/MovieCard";
-import { SearchMovies } from "../../components/SearchMovies";
 
 import { useMovieUrl } from "../../hooks/useMovieUrl";
 
@@ -11,7 +10,6 @@ export function Home() {
 
   return (
     <Container>
-      <SearchMovies />
       <Title>Melhores</Title>
       <MoviesContainer>
         {movies.length === 0 && <Loading>Carregando...</Loading>}

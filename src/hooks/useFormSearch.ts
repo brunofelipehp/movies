@@ -24,5 +24,5 @@ export const useFormSearch = () => {
         setSearch(event.target.value);
       }
 
-      return {handleSubmit ,inputChange}
+      return {search, handleSubmit ,inputChange}
 }

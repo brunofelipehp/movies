@@ -1,42 +1,13 @@
-import { useSearchParams } from "react-router-dom";
-import { Container, MoviesContainer, Title } from "./styles";
-import { useEffect, useState } from "react";
-
-import { MoviesProps } from "../Home";
 import { MovieCard } from "../../components/MovieCard";
+import { useMovieUrl } from "../../hooks/useMovieUrl";
 
-interface MovieProps extends MoviesProps {}
+import { Container, MoviesContainer, Title } from "./styles";
 
-const searchUrl: string = import.meta.env.VITE_SEARCH
-const apiKey: string = import.meta.env.VITE_API_KEY;
+export function Search() {
+  const { movies, query } = useMovieUrl();
 
-
-export  function Search () {
-  const [searchParams] = useSearchParams()
-
-  const [movies, setMovies] = useState<MovieProps[]>([])
-  const query = searchParams.get("q")
-
-  const getSearchMovies = async (url: string) => {
-    const res = await fetch(url, {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${apiKey}`,
-      },
-    });
-    const data = await res.json();
-
-    setMovies(data.results);
-  };
-
-  useEffect(() => {
-    const searchWithQueryUrl = `${searchUrl}?query=${query}`;
-
-    getSearchMovies(searchWithQueryUrl);
-  }, [query]);
-
-    return (
-<Container>
+  return (
+    <Container>
       <Title>
         Resultados para <span>{query}</span>
       </Title>
@@ -44,7 +15,7 @@ export  function Search () {
         {movies.length === 0 && <p>Carregando...</p>}
         {movies.length > 0 &&
           movies.map((movie) => (
-            <MovieCard 
+            <MovieCard
               key={movie.id}
               id={movie.id}
               title={movie.title}
@@ -54,6 +25,5 @@ export  function Search () {
           ))}
       </MoviesContainer>
     </Container>
-    );
-  }
-  
+  );
+}

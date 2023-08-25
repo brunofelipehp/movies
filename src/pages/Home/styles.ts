@@ -16,6 +16,7 @@ margin: 2rem 0 1rem;
 export const MoviesContainer = styled.div`
 display: flex;
 flex-wrap: wrap;
+justify-content: center;
 gap: 2.5rem;
 padding: 2rem;
 max-width: 1200px;

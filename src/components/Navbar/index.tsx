@@ -1,5 +1,5 @@
 import { Link} from "react-router-dom";
-import { BiCameraMovie } from "react-icons/bi";
+import { PiPopcorn } from "react-icons/pi";
 
 import { Menu } from "./styles";
 
@@ -10,7 +10,7 @@ export const Navbar = () => {
     <Menu>
       <h2>
         <Link to="/">
-          <BiCameraMovie /> MoviesLib
+          <PiPopcorn /> MoviesLib
         </Link>
       </h2>
     </Menu>
