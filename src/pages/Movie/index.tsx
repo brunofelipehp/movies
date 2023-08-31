@@ -41,16 +41,14 @@ export function Movie() {
             <h3>
               <BsWallet2 /> Orçamento
             </h3>
-            <p>{movieDetails.budget}</p>
+            <p>{formatCurrencyMovie(movieDetails.budget)}</p>
           </Info>
 
           <Info>
             <h3>
               <BsGraphUp /> Receita
             </h3>
-            <p>
-              {formatCurrencyMovie(movieDetails.revenue)}
-            </p>
+            <p>{formatCurrencyMovie(movieDetails.revenue)}</p>
           </Info>
 
           <Info>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 export interface MoviesProps {
@@ -10,7 +10,7 @@ export interface MoviesProps {
 
 interface DetailsProps {
   tagline: string;
-  budget: string;
+  budget: number;
   revenue: number;
   runtime: number;
   overview: string;
@@ -30,26 +30,29 @@ export const useMovieUrl = (id?: string) => {
 
   const query = searchParams.get("q");
 
-  const fetchMoviesUrl = async (url: string) => {
-    const res = await fetch(url, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-      },
-    });
-    const data = await res.json();
+  const fetchMoviesUrl = useCallback(
+    async (url: string) => {
+      const res = await fetch(url, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${apiKey}`,
+        },
+      });
+      const data = await res.json();
 
-    if (id) {
-      setMovieDetails(data);
-    } else {
-      setMovies(data.results);
-    }
-  };
+      if (id) {
+        setMovieDetails(data);
+      } else {
+        setMovies(data.results);
+      }
+    },
+    [id]
+  );
 
   const formatCurrencyMovie = (number: number) => {
-    return number.toLocaleString("en-US", {
+    return number.toLocaleString("pt-BR", {
       style: "currency",
-      currency: "USD",
+      currency: "BRL",
     });
   };
 
@@ -59,11 +62,11 @@ export const useMovieUrl = (id?: string) => {
       fetchMoviesUrl(searchWithQueryUrl);
     } else {
       const topUrl: string = id
-        ? `${moviesURL}${id}`
-        : `${moviesURL}top_rated?${apiKey}`;
+        ? `${moviesURL}${id}?language=pt-BR`
+        : `${moviesURL}top_rated?${apiKey}&language=pt-BR`;
       fetchMoviesUrl(topUrl);
     }
-  }, [query]);
+  }, [query, fetchMoviesUrl, id]);
 
   return { movies, movieDetails, formatCurrencyMovie, query };
 };

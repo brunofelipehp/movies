@@ -2,7 +2,7 @@ import { FormSearchMovies } from "./styles";
 import { useFormSearch } from "../../hooks/useFormSearch";
 
 export const SearchMovies = () => {
-  const {search, handleSubmit, inputChange } = useFormSearch();
+  const { search, handleSubmit, inputChange } = useFormSearch();
 
   return (
     <FormSearchMovies onSubmit={handleSubmit}>
