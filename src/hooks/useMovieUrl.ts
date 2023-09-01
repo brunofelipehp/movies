@@ -24,6 +24,7 @@ const apiKey: string = import.meta.env.VITE_API_KEY;
 
 export const useMovieUrl = (id?: string) => {
   const [movies, setMovies] = useState<MoviesProps[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
   const [movieDetails, setMovieDetails] = useState<MoviesDetailsProps>();
 
   const [searchParams] = useSearchParams();
@@ -32,6 +33,7 @@ export const useMovieUrl = (id?: string) => {
 
   const fetchMoviesUrl = useCallback(
     async (url: string) => {
+      setLoading(true);
       const res = await fetch(url, {
         headers: {
           "Content-Type": "application/json",
@@ -45,6 +47,7 @@ export const useMovieUrl = (id?: string) => {
       } else {
         setMovies(data.results);
       }
+      setLoading(false);
     },
     [id]
   );
@@ -68,5 +71,5 @@ export const useMovieUrl = (id?: string) => {
     }
   }, [query, fetchMoviesUrl, id]);
 
-  return { movies, movieDetails, formatCurrencyMovie, query };
+  return { movies, movieDetails, formatCurrencyMovie, query, loading };
 };

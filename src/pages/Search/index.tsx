@@ -4,7 +4,7 @@ import { useMovieUrl } from "../../hooks/useMovieUrl";
 import { Container, MoviesContainer, Title } from "./styles";
 
 export function Search() {
-  const { movies, query } = useMovieUrl();
+  const { movies, query, loading } = useMovieUrl();
 
   return (
     <Container>
@@ -12,8 +12,12 @@ export function Search() {
         Resultados para <span>{query}</span>
       </Title>
       <MoviesContainer>
-        {movies.length === 0 && <p>Carregando...</p>}
+        {loading && <p>Carregando...</p>}
+        {movies.length === 0 && !loading && (
+          <p>Nenhum filme encontrado Desculpe!!!</p>
+        )}
         {movies.length > 0 &&
+          !loading &&
           movies.map((movie) => (
             <MovieCard
               key={movie.id}
